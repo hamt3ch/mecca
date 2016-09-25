@@ -5,7 +5,6 @@ const assert = require('assert');
 // Express =======
 const app = express();
 const api = express.Router();
-var session = require('express-session');
 
 // Http Helpers =======
 var morgan       = require('morgan');
