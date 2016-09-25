@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 var db = require('./db')(config);
 
 // Configuring passport
-auth = require('./auth')(app);
+var auth = require('./auth')(app);
 
 
 // Export app
