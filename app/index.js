@@ -1,6 +1,4 @@
 const express = require('express')
-// const mongo = require('mongodb').MongoClient;
-// const mongoose = require('mongoose');
 const config = require('./config');
 const assert = require('assert');
 
@@ -21,12 +19,6 @@ app.use(bodyParser.json());
 * @config   json object to has parameters need to create db instance
 */
 var db = require('./db')(config);
-
-// // Connect mongoose as well
-// mongoose.connect(url, function(err) {
-//   assert.equal(null, err);
-//   console.log("Connected successfully to server w/ mongoose");
-// });
 
 // Configuring passport
 auth = require('./auth')(app);
