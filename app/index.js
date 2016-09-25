@@ -1,6 +1,6 @@
 const express = require('express')
-const mongo = require('mongodb').MongoClient;
-const mongoose = require('mongoose');
+// const mongo = require('mongodb').MongoClient;
+// const mongoose = require('mongoose');
 const config = require('./config');
 const assert = require('assert');
 
@@ -15,14 +15,18 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-// Connection URL for db
-var url = config.db.url;
+/*
+* setup db instance with whatever configurations needed
+*
+* @config   json object to has parameters need to create db instance
+*/
+var db = require('./db')(config);
 
-// Connect mongoose as well
-mongoose.connect(url, function(err) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server w/ mongoose");
-});
+// // Connect mongoose as well
+// mongoose.connect(url, function(err) {
+//   assert.equal(null, err);
+//   console.log("Connected successfully to server w/ mongoose");
+// });
 
 // Configuring passport
 auth = require('./auth')(app);
