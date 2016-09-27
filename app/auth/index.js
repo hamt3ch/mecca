@@ -31,7 +31,7 @@ passport.use(new FacebookStrategy({
       if (err) {
         console.log(err);
       } if (!user) {
-        // no user found create one
+        // No user found create one
         var newUser = new User({
           appId: 'test_app',
           provider: 'facebook',
@@ -42,7 +42,11 @@ passport.use(new FacebookStrategy({
               'refreshToken': refreshToken
           }
         });
+        
+        // Save user in db
+        newUser.save(function(err){ if (err) {console.log(err);}});
         return done(null, newUser);
+
       } if (user) {
         // found user
         return done(null, user);
