@@ -59,10 +59,6 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://localhost:3000/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    //console.log(accessToken);
-    //console.log(refreshToken);
-    //console.log(profile);
-    // done(null, null);
     User.findOne({ 'id' : profile.id},
     function(err, user) {
       if (err) {
@@ -79,7 +75,7 @@ passport.use(new FacebookStrategy({
               'refreshToken': refreshToken
           }
         });
-        
+
         // Save user in db
         newUser.save(function(err){ if (err) {console.log(err);}});
         return done(null, newUser);
