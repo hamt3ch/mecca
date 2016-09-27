@@ -9,6 +9,9 @@ function local(passport, User) {
     User.findOne({ 'name' : username },
     function(err, user) {
         // In case of any error, return using the done method
+        console.log(user);
+        console.log(password);
+        console.log(user.password);
         if (err)
           return done(err);
         // Username does not exist, log error & redirect back
