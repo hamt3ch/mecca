@@ -4,12 +4,13 @@ var User = mongoose.model('User', schema);
 
 module.exports = function(app){
 
-  //init your passport 
+  //init your passport
   var passport = require('./passport')(app, User);
 
   //give passports to all the different strategies
   var local = require('./local')(passport, User);
 
+  //list of all the routes available for passport
   app.post('/login',
     passport.authenticate('local'),
     function(req, res) {
