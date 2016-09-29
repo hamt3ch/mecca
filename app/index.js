@@ -1,5 +1,5 @@
-const express = require('express')
-const mongo = require('mongodb').MongoClient;
+"use strict";
+const express = require('express');
 const mongoose = require('mongoose');
 const assert = require('assert');
 const config = require('./config');
@@ -17,8 +17,6 @@ mongoose.connect(url, function(err) {
   console.log("Connected successfully to server w/ mongoose");
 });
 
-var db = mongoose.connection;
-
 app.use(bodyParser.json());
 
 //List of Products in
@@ -31,7 +29,7 @@ app.use('/api', api);
 //mongoose.connection.close();
 
 app.get('/', (request, response) => {
-  response.send('uRyde Board - Alpha')
-})
+  response.send('uRyde Board - Alpha');
+});
 
 module.exports = app;
