@@ -9,7 +9,7 @@ module.exports = function(app){
 
   // give passports to all the different strategies
   var local = require('./local')(passport, User);
-  var facebook = require('./facebook')(passport,User);
+  var facebook = require('./facebook')(passport, User);
 
 
 // Redirect the user to Facebook for authentication.  When complete,

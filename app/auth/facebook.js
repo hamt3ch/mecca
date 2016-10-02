@@ -1,6 +1,6 @@
 
 var FacebookStrategy = require('passport-facebook').Strategy;
-function passport(passport,User){
+function facebook(passport,User){
   // list of all the routes available for passport
   passport.use(new FacebookStrategy({
     clientID: "318092088551180",
@@ -37,5 +37,6 @@ function passport(passport,User){
     });
   }
 ));
-
 }
+
+module.exports = facebook;
