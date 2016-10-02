@@ -1,12 +1,19 @@
 const express = require('express')
 const mongo = require('mongodb').MongoClient;
 const mongoose = require('mongoose');
-const assert = require('assert');
 const config = require('./config');
+const assert = require('assert');
+
+// Express =======
 const app = express();
 const api = express.Router();
+var session = require('express-session');
 
+// Http Helpers =======
+var morgan       = require('morgan');
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+app.use(bodyParser.json());
 
 // Connection URL for db
 var url = config.db.url;
@@ -17,21 +24,9 @@ mongoose.connect(url, function(err) {
   console.log("Connected successfully to server w/ mongoose");
 });
 
-var db = mongoose.connection;
+// Configuring passport
+auth = require('./auth')(app);
 
-app.use(bodyParser.json());
 
-//List of Products in
-require('./user').controller(app);
-
-// apply the routes to our application with the prefix /api
-app.use('/api', api);
-
-// Close connection for mongoose
-//mongoose.connection.close();
-
-app.get('/', (request, response) => {
-  response.send('uRyde Board - Alpha')
-})
-
+// Export app
 module.exports = app;
