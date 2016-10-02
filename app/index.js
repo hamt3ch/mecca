@@ -1,5 +1,5 @@
-const express = require('express')
-const mongo = require('mongodb').MongoClient;
+"use strict";
+const express = require('express');
 const mongoose = require('mongoose');
 const config = require('./config');
 const assert = require('assert');

@@ -1,17 +1,9 @@
-var userModel = require('./user')
-const mongoose = require('mongoose');
+"use strict";
 
-var db = mongoose.connection;
+var userModel = require('./user');
+var mongoose = require('mongoose');
 
 function userController(app){
-
-  /*
-    GET: Request to pull all rides currently in DB
-  */
-  app.get('/user', (req, res) => {
-      console.log("this is a get in rides")
-  })
-
   app.post('/user', (req, res) => {
     //Creating User//////////////////////////////////////
     var User = mongoose.model('User', userModel);
@@ -22,12 +14,12 @@ function userController(app){
       accountID: "hjf32u989h"
     });
 
-    hugh.save()
+    hugh.save();
 
     res.json(hugh);
     ///////////////////////////////////////////////////////
 
-  })
+  });
 }
 
 module.exports = userController;
