@@ -31,7 +31,9 @@ var auth = require('./auth')(app);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());
-app.get('/', require('./routes').index);
+app.get('/', function(req, res) {
+  res.render('index', { name: 'John' });
+});
 
 // Export app
 module.exports = app;
