@@ -1,10 +1,10 @@
 {
-  "name": "ryde-board",
+  "name": "mecca",
   "version": "1.0.0",
-  "description": "The things we need to build",
-  "main": "app.js",
+  "description": "Identity service for vagrance suite",
+  "main": "mecca.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node mecca.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "HacksNextDoor",
@@ -12,7 +12,6 @@
   "dependencies": {
     "bluebird": "^3.4.3",
     "connect-flash": "^0.1.1",
-    "cron": "^1.1.0",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
     "glob": "^7.0.6",
@@ -21,7 +20,6 @@
     "mongodb": "^2.2.8",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "plaid": "^1.0.11",
     "request": "^2.74.0",
     "request-promise": "^4.1.1"
   },
