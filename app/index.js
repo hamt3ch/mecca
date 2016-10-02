@@ -25,7 +25,7 @@ mongoose.connect(url, function(err) {
 });
 
 // Configuring passport
-auth = require('./auth')(app);
+var auth = require('./auth')(app);
 
 
 // Export app
