@@ -5,7 +5,7 @@ function facebook(passport,User){
   passport.use(new FacebookStrategy({
     clientID: "318092088551180",
     clientSecret: "f5fa7a25f0f042c7f16f78fef2afc04a",
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
+    callbackURL: "http://localhost:3000/connect/facebook/callback"
   },
 
   function(accessToken, refreshToken, profile, done) {

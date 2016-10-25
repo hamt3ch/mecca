@@ -10,6 +10,7 @@ module.exports = function(app){
   // give passports to all the different strategies
   var local = require('./local')(passport, User);
   var facebook = require('./facebook')(passport, User);
+  var google = require('./google')(passport, User);
 
 
 // Redirect the user to Facebook for authentication.  When complete,
@@ -23,6 +24,28 @@ app.get('/connect/facebook', passport.authenticate('facebook'));
 // authentication has failed.
 app.get('/connect/facebook/callback',
   passport.authenticate('facebook'),
+  function(req, res) {
+    // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+    //  return access/bearer token w/ user info
+    res.json(req.user);
+  });
+
+// GET /connect/google
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  The first step in Google authentication will involve
+//   redirecting the user to google.com.  After authorization, Google
+//   will redirect the user back to this application at /auth/google/callback
+app.get('/connect/google',
+  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
+
+// GET /connect/google/callback
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  If authentication fails, the user will be redirected back to the
+//   login page.  Otherwise, the primary route function function will be called,
+//   which, in this example, will redirect the user to the home page.
+app.get('/connect/google/callback',
+  passport.authenticate('google'),
   function(req, res) {
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
