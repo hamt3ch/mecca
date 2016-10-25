@@ -1,13 +1,10 @@
-"use strict";
-const express = require('express');
-const mongoose = require('mongoose');
+const express = require('express')
 const config = require('./config');
 const assert = require('assert');
 
 // Express =======
 const app = express();
 const api = express.Router();
-var session = require('express-session');
 
 // Http Helpers =======
 var morgan       = require('morgan');
@@ -15,14 +12,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-// Connection URL for db
-var url = config.db.url;
-
-// Connect mongoose as well
-mongoose.connect(url, function(err) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server w/ mongoose");
-});
+/*
+* setup db instance with whatever configurations needed
+*
+* @config   json object to has parameters need to create db instance
+*/
+var db = require('./db')(config);
 
 // Configuring passport
 var auth = require('./auth')(app);
