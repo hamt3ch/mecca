@@ -1,4 +1,7 @@
-function init() {
+var passport = require('passport');
+var expressSession = require('express-session');
+
+function init(app, User) {
    app.use(expressSession({secret: 'mySecretKey'}));
    app.use(passport.initialize());
    app.use(passport.session());
@@ -13,8 +16,8 @@ function init() {
     });
   });
 
-  //list passport supported
+  return passport;
 
 }
 
-module.exports = init
+module.exports = init;
