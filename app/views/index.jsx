@@ -2,7 +2,9 @@ var React = require('react');
 
 class HelloMessage extends React.Component {
   render() {
-    return <div>Hello {this.props.name}</div>;
+    return(
+      <div>{this.props.name}</div>
+    );
   }
 }
 
