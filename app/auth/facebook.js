@@ -3,9 +3,9 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 function facebook(passport,User){
   // list of all the routes available for passport
   passport.use(new FacebookStrategy({
-    clientID: "318092088551180",
-    clientSecret: "f5fa7a25f0f042c7f16f78fef2afc04a",
-    callbackURL: "http://localhost:3000/auth/facebook/callback"
+    clientID: "yourClientID",
+    clientSecret: "yourSecret",
+    callbackURL: "http://localhost:3000/your/callback"
   },
 
   function(accessToken, refreshToken, profile, done) {
